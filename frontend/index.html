@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Affiliate Video Builder - Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- LEFT SIDEBAR -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <span class="material-icons-outlined logo-icon">auto_awesome</span>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item tooltip" data-tooltip="Module 1: Trend Analyzer">
+                    <span class="material-icons-outlined">trending_up</span>
+                </li>
+                <li class="nav-item tooltip" data-tooltip="Module 2: Script Gen">
+                    <span class="material-icons-outlined">edit_note</span>
+                </li>
+                <li class="nav-item tooltip" data-tooltip="Module 3: Video Studio">
+                    <span class="material-icons-outlined">movie_creation</span>
+                </li>
+                <li class="nav-item tooltip" data-tooltip="Module 4: Admin Audit">
+                    <span class="material-icons-outlined">fact_check</span>
+                </li>
+                <li class="nav-item tooltip" data-tooltip="Module 5: Multi-Publish">
+                    <span class="material-icons-outlined">send</span>
+                </li>
+                <li class="nav-item active tooltip" data-tooltip="Module 7: AI Chat">
+                    <span class="material-icons-outlined">chat</span>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <li class="nav-item tooltip" data-tooltip="Settings">
+                    <span class="material-icons-outlined">settings</span>
+                </li>
+            </div>
+        </nav>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="workspace">
+            <header class="workspace-header">
+                <div class="header-title">
+                    <h1>Chat AI (Module 7)</h1>
+                    <span class="badge">Gemini 2.0 Flash</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary">
+                        <span class="material-icons-outlined">save</span>
+                        Lưu Kịch Bản
+                    </button>
+                    <button class="btn btn-primary">
+                        <span class="material-icons-outlined">play_arrow</span>
+                        Tạo Video Ngay
+                    </button>
+                </div>
+            </header>
+
+            <div class="workspace-content">
+                <!-- System Instruction Area (like AI Studio) -->
+                <div class="system-instruction-box">
+                    <div class="box-header">
+                        <span class="material-icons-outlined">settings_suggest</span>
+                        <span>System Instructions</span>
+                    </div>
+                    <textarea class="system-input" placeholder="Bạn là chuyên gia tư vấn TikTok Affiliate Marketing..."></textarea>
+                </div>
+
+                <!-- Chat Area -->
+                <div class="chat-history" id="chat-history">
+                    <div class="chat-message system">
+                        <div class="avatar"><span class="material-icons-outlined">smart_toy</span></div>
+                        <div class="message-content">
+                            <p>Chào bạn, tôi là trợ lý AI chuyên về TikTok Affiliate. Tôi đã nạp dữ liệu xu hướng mới nhất từ Module 1. Bạn muốn tôi làm gì hôm nay?</p>
+                            <div class="quick-actions">
+                                <button class="action-chip">Tạo kịch bản cho sản phẩm Hot</button>
+                                <button class="action-chip">Xem danh sách video viral</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input Box -->
+                <div class="chat-input-wrapper">
+                    <textarea class="chat-input" id="chat-input" placeholder="Nhập yêu cầu tạo video, kịch bản hoặc phân tích... (Nhấn Ctrl+Enter để gửi)"></textarea>
+                    <div class="chat-controls">
+                        <button class="icon-btn tooltip" data-tooltip="Đính kèm file"><span class="material-icons-outlined">attach_file</span></button>
+                        <button class="icon-btn tooltip" data-tooltip="Chọn Model"><span class="material-icons-outlined">model_training</span></button>
+                        <div class="spacer"></div>
+                        <button class="btn btn-run" id="send-btn">Gửi</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- RIGHT CONFIG PANEL -->
+        <aside class="config-panel">
+            <div class="panel-header">
+                <h2>Cấu hình tham số</h2>
+            </div>
+            
+            <div class="panel-section">
+                <label>Model</label>
+                <select class="config-select">
+                    <option>Gemini 2.0 Flash</option>
+                    <option>Gemini 2.5 Pro</option>
+                    <option>Google Veo 2 (Video)</option>
+                    <option>Nanobana (Avatar)</option>
+                </select>
+            </div>
+
+            <div class="panel-section">
+                <div class="slider-header">
+                    <label>Temperature</label>
+                    <span class="slider-value">0.7</span>
+                </div>
+                <input type="range" class="config-slider" min="0" max="1" step="0.1" value="0.7">
+            </div>
+
+            <div class="panel-section">
+                <label>Nền tảng mục tiêu</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label"><input type="checkbox" checked> TikTok VN</label>
+                    <label class="checkbox-label"><input type="checkbox" checked> Facebook Reels</label>
+                    <label class="checkbox-label"><input type="checkbox"> YouTube Shorts</label>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <label>Thời lượng Video (Giây)</label>
+                <input type="number" class="config-input" value="30">
+            </div>
+            
+            <div class="panel-section">
+                <label>Advanced Prompting</label>
+                <button class="btn btn-outline full-width">Chỉnh sửa Context</button>
+            </div>
+        </aside>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
