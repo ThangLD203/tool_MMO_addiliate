@@ -46,3 +46,12 @@ def generate_script(request: schemas.ScriptGenRequest, db: Session = Depends(dat
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+from .services import trend_analyzer
+@router.post("/trends/analyze", response_model=schemas.TrendAnalyzeResponse)
+async def analyze_trends(request: schemas.TrendAnalyzeRequest):
+    try:
+        # Currently using mock data as requested
+        return await trend_analyzer.generate_mock_trends(request.category)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")

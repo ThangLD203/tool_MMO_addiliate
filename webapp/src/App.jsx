@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Sidebar from './components/Sidebar'
 import ChatWorkspace from './components/ChatWorkspace'
+import TrendAnalyzerWorkspace from './components/TrendAnalyzerWorkspace'
 import ConfigPanel from './components/ConfigPanel'
 
 import './styles/tokens.css'
@@ -8,13 +9,15 @@ import './styles/layout.css'
 import './styles/components.css'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('chat');
+  const [activeTab, setActiveTab] = useState('trend');
 
   return (
     <div className="app-container">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === 'chat' ? (
         <ChatWorkspace />
+      ) : activeTab === 'trend' ? (
+        <TrendAnalyzerWorkspace />
       ) : (
         <main className="workspace">
           <header className="workspace-header">

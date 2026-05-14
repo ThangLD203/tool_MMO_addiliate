@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/config/keys';
+const API_URL = '/api/config/keys';
 
 export default function ApiKeyModal({ isOpen, onClose }) {
   const [keys, setKeys] = useState({

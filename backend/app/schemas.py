@@ -59,3 +59,39 @@ class ScriptGenResponse(BaseModel):
     thumbnail_suggestion: str
     ab_variant_hook: str
 
+class TrendAnalyzeRequest(BaseModel):
+    category: str
+    timeframe: str = "7 ngày"
+
+class AudioTrend(BaseModel):
+    name: str
+    bpm: int
+    mood: str
+
+class ViralVideo(BaseModel):
+    video_id: str
+    source: str
+    url: str
+    viral_score: int
+    hook_type: str
+    hook_text: str
+    script_structure: str
+    audio_trend: AudioTrend
+    visual_style: str
+    product_usp: List[str]
+    hashtags: List[str]
+    caption_keywords: List[str]
+    top_reason_viral: List[str]
+    estimated_reach: int
+    affiliate_placement: str
+
+class TrendingProduct(BaseModel):
+    product_name: str
+    estimated_sales: int
+    price_range: str
+    viral_potential: int
+
+class TrendAnalyzeResponse(BaseModel):
+    trending_videos: List[ViralVideo]
+    trending_products: List[TrendingProduct]
+
