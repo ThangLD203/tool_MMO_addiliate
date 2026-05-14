@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { MdVpnKey } from 'react-icons/md';
+import ApiKeyModal from './ApiKeyModal';
 
 export default function ConfigPanel() {
   const [temperature, setTemperature] = useState(0.7);
+  const [isKeyModalOpen, setIsKeyModalOpen] = useState(false);
 
   return (
     <aside className="config-panel">
@@ -48,9 +51,22 @@ export default function ConfigPanel() {
       </div>
       
       <div className="panel-section">
+        <label>Thiết lập API</label>
+        <button 
+          className="btn btn-secondary" 
+          style={{ width: '100%', borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
+          onClick={() => setIsKeyModalOpen(true)}
+        >
+          <MdVpnKey /> Quản lý API Keys
+        </button>
+      </div>
+      
+      <div className="panel-section">
         <label>Advanced Prompting</label>
         <button className="btn btn-outline" style={{ width: '100%', borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}>Chỉnh sửa Context</button>
       </div>
+
+      <ApiKeyModal isOpen={isKeyModalOpen} onClose={() => setIsKeyModalOpen(false)} />
     </aside>
   );
 }

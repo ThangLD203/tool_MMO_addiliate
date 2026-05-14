@@ -9,3 +9,17 @@ services:
       - "8080:80"
     container_name: tiktok-affiliate-frontend
     restart: unless-stopped
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    container_name: tiktok-affiliate-backend
+    restart: unless-stopped
+    volumes:
+      - ./backend/data:/app/data
+
