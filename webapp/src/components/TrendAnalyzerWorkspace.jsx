@@ -65,7 +65,8 @@ export default function TrendAnalyzerWorkspace() {
                     </div>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Hook:</strong> {vid.hook_type} - "{vid.hook_text}"</p>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Nhạc:</strong> {vid.audio_trend.name}</p>
-                    <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0' }}><strong>Hashtags:</strong> {vid.hashtags.join(' ')}</p>
+                    <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Hashtags:</strong> {vid.hashtags.join(' ')}</p>
+                    <p style={{ fontSize: '13px', margin: '0' }}><a href={vid.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)', textDecoration: 'none' }}>Xem Video ↗</a></p>
                   </div>
                 ))}
               </div>
@@ -83,6 +84,7 @@ export default function TrendAnalyzerWorkspace() {
                     </div>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Khoảng giá:</strong> {prod.price_range}</p>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Doanh số ước tính:</strong> {prod.estimated_sales} lượt bán</p>
+                    <p style={{ fontSize: '13px', margin: '0' }}><a href={prod.product_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)', textDecoration: 'none' }}>Xem Sản Phẩm ↗</a></p>
                   </div>
                 ))}
               </div>

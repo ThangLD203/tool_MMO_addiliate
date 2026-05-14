@@ -87,6 +87,7 @@ class ViralVideo(BaseModel):
 
 class TrendingProduct(BaseModel):
     product_name: str
+    product_url: str
     estimated_sales: int
     price_range: str
     viral_potential: int

@@ -34,6 +34,7 @@ async def generate_mock_trends(category: str) -> schemas.TrendAnalyzeResponse:
         
         products.append({
             "product_name": f"Sản phẩm {category} siêu hot {i}",
+            "product_url": f"https://shop.tiktok.com/view/product/{i}00{i}",
             "estimated_sales": 1000 + i*150,
             "price_range": "150.000đ - 300.000đ",
             "viral_potential": 90 - i
