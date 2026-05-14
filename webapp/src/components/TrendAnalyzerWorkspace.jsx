@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { MdSearch, MdDataExploration, MdVideoLibrary, MdStore } from 'react-icons/md';
+import { MdSearch, MdDataExploration, MdVideoLibrary, MdStore, MdEditNote } from 'react-icons/md';
 
-export default function TrendAnalyzerWorkspace() {
+export default function TrendAnalyzerWorkspace({ onSelectForScriptGen }) {
   const [category, setCategory] = useState('');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
@@ -66,7 +66,22 @@ export default function TrendAnalyzerWorkspace() {
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Hook:</strong> {vid.hook_type} - "{vid.hook_text}"</p>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Nhạc:</strong> {vid.audio_trend.name}</p>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Hashtags:</strong> {vid.hashtags.join(' ')}</p>
-                    <p style={{ fontSize: '13px', margin: '0' }}><a href={vid.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)', textDecoration: 'none' }}>Xem Video ↗</a></p>
+                    
+                    <div style={{ margin: '10px 0', padding: '10px', backgroundColor: 'var(--bg-input)', borderRadius: '6px', borderLeft: '3px solid var(--accent-color)' }}>
+                      <strong style={{ fontSize: '13px', display: 'block', marginBottom: '5px' }}>💡 Phân tích nguyên nhân Viral:</strong>
+                      <ul style={{ margin: 0, paddingLeft: '15px', fontSize: '13px', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        {vid.top_reason_viral.map((reason, rIdx) => (
+                          <li key={rIdx}>{reason}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '15px' }}>
+                      <p style={{ fontSize: '13px', margin: '0' }}><a href={vid.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)', textDecoration: 'none' }}>Xem Video ↗</a></p>
+                      <button className="btn btn-primary" style={{ padding: '6px 12px', fontSize: '12px' }} onClick={() => onSelectForScriptGen('video', vid)}>
+                        <MdEditNote size={16} /> Dùng Video Này
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -84,7 +99,13 @@ export default function TrendAnalyzerWorkspace() {
                     </div>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Khoảng giá:</strong> {prod.price_range}</p>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 5px 0' }}><strong>Doanh số ước tính:</strong> {prod.estimated_sales} lượt bán</p>
-                    <p style={{ fontSize: '13px', margin: '0' }}><a href={prod.product_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)', textDecoration: 'none' }}>Xem Sản Phẩm ↗</a></p>
+                    
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '15px' }}>
+                      <p style={{ fontSize: '13px', margin: '0' }}><a href={prod.product_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)', textDecoration: 'none' }}>Xem Sản Phẩm ↗</a></p>
+                      <button className="btn btn-primary" style={{ padding: '6px 12px', fontSize: '12px' }} onClick={() => onSelectForScriptGen('product', prod)}>
+                        <MdEditNote size={16} /> Bán Sản Phẩm Này
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>

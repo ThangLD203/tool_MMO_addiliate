@@ -27,7 +27,11 @@ async def generate_mock_trends(category: str) -> schemas.TrendAnalyzeResponse:
             "product_usp": ["Giá rẻ", "Hiệu quả nhanh"],
             "hashtags": [f"#{category.replace(' ', '')}", "#xuhuong", "#review"],
             "caption_keywords": [category, "hot", "chốt đơn"],
-            "top_reason_viral": ["Âm thanh bắt tai", "Hook 3 giây đầu quá ấn tượng"],
+            "top_reason_viral": [
+                f"Video sử dụng cấu trúc Hook '{'Câu hỏi gây tò mò' if i % 2 == 0 else 'Kết quả bất ngờ (Before/After)'}' đánh trúng trực tiếp vào nỗi đau của khách hàng mục tiêu trong 3 giây đầu tiên.",
+                f"Sự kết hợp hoàn hảo giữa âm thanh '{'Sôi động' if i % 2 == 0 else 'Chữa lành'}' (BPM: {120 + i*5}) và góc máy quay { 'cận cảnh chân thực' if i % 2 == 0 else 'từ trên xuống (top-down)' } tạo ra trải nghiệm thị giác cuốn hút, giữ chân người dùng xem hết video.",
+                f"Có chứa bằng chứng xã hội (Social Proof) mạnh mẽ thông qua { 'lời khen ngợi từ khách hàng cũ' if i % 2 == 0 else 'đoạn review so sánh tính năng' }, giúp tăng độ tin cậy để chốt đơn."
+            ],
             "estimated_reach": 500000 + i*10000,
             "affiliate_placement": "Gắn link ở caption và comment ghim"
         })

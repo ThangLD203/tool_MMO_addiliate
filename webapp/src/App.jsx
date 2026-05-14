@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from './components/Sidebar'
 import ChatWorkspace from './components/ChatWorkspace'
 import TrendAnalyzerWorkspace from './components/TrendAnalyzerWorkspace'
+import ScriptGenWorkspace from './components/ScriptGenWorkspace'
 import ConfigPanel from './components/ConfigPanel'
 
 import './styles/tokens.css'
@@ -10,6 +11,12 @@ import './styles/components.css'
 
 function App() {
   const [activeTab, setActiveTab] = useState('trend');
+  const [selectedContext, setSelectedContext] = useState(null);
+
+  const handleSelectForScriptGen = (type, data) => {
+    setSelectedContext({ type, data });
+    setActiveTab('script');
+  };
 
   return (
     <div className="app-container">
@@ -17,7 +24,9 @@ function App() {
       {activeTab === 'chat' ? (
         <ChatWorkspace />
       ) : activeTab === 'trend' ? (
-        <TrendAnalyzerWorkspace />
+        <TrendAnalyzerWorkspace onSelectForScriptGen={handleSelectForScriptGen} />
+      ) : activeTab === 'script' ? (
+        <ScriptGenWorkspace initialContext={selectedContext} />
       ) : (
         <main className="workspace">
           <header className="workspace-header">
